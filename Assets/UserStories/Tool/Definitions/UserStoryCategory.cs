@@ -9,7 +9,7 @@ namespace UserStories
     {
         public string Name;
         public string Description;
-        public string TextColor;
+        public Color TextColor;
 
         public bool Equals(UserStoryCategory other)
         {
