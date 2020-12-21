@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f0f8996445fd8243b0ca7e1b2912e8a, type: 3}
-  m_Name: SaveSystem
+  m_Name: TestS
   m_EditorClassIdentifier: 
-  Name: SaveSystem
-  Description: Stories explaining save system
+  Name: 
+  Description: 
   TextColor: {r: 0, g: 0, b: 0, a: 0}
