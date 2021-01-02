@@ -14,7 +14,7 @@ namespace UserStories
         public string Description;
 
         [Space]
-        [ColorUsage(true, true)]
+        [ColorUsage(false, true)]
         public Color TextColor;
 
         public bool Equals(UserStoryCategory other)

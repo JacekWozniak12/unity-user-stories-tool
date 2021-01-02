@@ -5,6 +5,7 @@ namespace UserStories
     /// <summary>
     /// Item built in manner: ask question, think why should be asked and how should we answer it.
     /// </summary>
+    [System.Serializable]
     [CreateAssetMenu(menuName = Settings.MENU_SO_STORY)]
     public class UserStory : ScriptableObject
     {
@@ -14,7 +15,7 @@ namespace UserStories
         /// <summary>
         /// What user wants to do.
         /// </summary>
-        [TextArea]
+        [TextArea(1, 5)]
         [Space]
         [Tooltip("What user wants to do.")]
         public string Request;
@@ -22,7 +23,7 @@ namespace UserStories
         /// <summary>
         /// Why user wants that.
         /// </summary>
-        [TextArea]
+        [TextArea(1, 10)]
         [Space]
         [Tooltip("Why user wants that.")]
         public string WhyRequested;
@@ -30,9 +31,17 @@ namespace UserStories
         /// <summary>
         /// What should've been done to solve the issue risen by user.
         /// </summary>
-        [TextArea]
+        [TextArea(1, 20)]
         [Space]
         [Tooltip("What should've been done to solve the issue risen by user.")]
         public string Answer;
+
+        [ContextMenu("Clean white spaces")]
+        public void TrimWhiteSpaces()
+        {
+            Answer = Answer.Trim();
+            WhyRequested = WhyRequested.Trim();
+            Request = Request.Trim();
+        }
     }
 }
