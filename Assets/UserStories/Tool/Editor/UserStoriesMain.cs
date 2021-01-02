@@ -1,6 +1,7 @@
 namespace UserStories
 {
     using System.Collections.Generic;
+    using Library;
     using UnityEngine;
 
     /// <summary>
@@ -10,12 +11,28 @@ namespace UserStories
     {
         private UserStoriesMain()
         {
-            UserStoriesContainers = new List<UserStoryContainer>();
+            RefreshContainer();
         }
 
         public void FindAllUserStories()
         {
+            RefreshContainer();
 
+            List<UserStoryCategory> UserStoryCategories = new List<UserStoryCategory>();
+            List<UserStory> UserStories = new List<UserStory>();
+            UserStories.AddRange(Unity.GetAssets<UserStory>(new string[] { Settings.DEFAULT_CATALOG }));
+            UserStoryCategories.AddRange(Unity.GetAssets<UserStoryCategory>(new string[] { Settings.DEFAULT_CATALOG }));
+
+            foreach (var category in UserStoryCategories)
+            {
+                var stories = UserStories.FindAll(x => x.Category == category);
+                UserStoriesContainers.Add(new UserStoryContainer(category, stories));
+            }
+        }
+
+        private void RefreshContainer()
+        {
+            UserStoriesContainers = new List<UserStoryContainer>();
         }
 
         public void Update()
@@ -42,12 +59,12 @@ namespace UserStories
         private void AddContainerToList(UserStory story)
         {
             UserStoryContainer container = new UserStoryContainer(story.Category, new List<UserStory>());
-            if(!FindIfUserStoryExists(story)) container.Add(story);
+            if (!FindIfUserStoryExists(story)) container.Add(story);
             UserStoriesContainers.Add(container);
         }
 
         public bool FindIfUserStoryExists(UserStory story) => FindIfUserStoryExists(story, out UserStory temp);
-        
+
         public bool FindIfUserStoryExists(UserStory story, out UserStory duplicate)
         {
             foreach (UserStoryContainer container in UserStoriesContainers)

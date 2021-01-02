@@ -9,7 +9,6 @@ namespace UserStories
         public UserStoryCategory Category;
 
         public List<UserStory> Stories;
-
         public UserStoryContainer(UserStoryCategory category, List<UserStory> stories)
         {
             Category = category;

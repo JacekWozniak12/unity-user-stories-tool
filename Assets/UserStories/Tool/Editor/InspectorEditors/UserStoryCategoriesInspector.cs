@@ -1,21 +1,23 @@
 namespace UserStories
 {
     using UnityEngine;
+    using Library;
     using UnityEditor;
     using System.Collections.Generic;
 
     [CustomEditor(typeof(UserStoryCategory))]
     public class UserStoryCategoriesInspector : Editor
     {
-        SerializedObject Object;
+        SerializedObject SerializedUserCategory;
         SerializedProperty Name;
         SerializedProperty Description;
         SerializedProperty TextColor;
         UserStoryContainer Container;
 
+
         private void OnEnable()
         {
-            Object = serializedObject;
+            SerializedUserCategory = serializedObject;
             Name = serializedObject.FindProperty("Name");
             Description = serializedObject.FindProperty("Description");
             TextColor = serializedObject.FindProperty("TextColor");
@@ -24,34 +26,32 @@ namespace UserStories
 
         public override void OnInspectorGUI()
         {
-            Object.Update();
+            SerializedUserCategory.Update();
             EditorGUILayout.PropertyField(Name);
             EditorGUILayout.PropertyField(Description);
             EditorGUILayout.PropertyField(TextColor);
+            EditorGUILayout.LabelField("UserStories", EditorStyles.boldLabel);
             
-            EditorGUILayout.LabelField("UserStories");
+            EditorGUILayout.BeginVertical();
             EditorGUILayout.BeginScrollView(Vector2.zero);
-            foreach(var Story in Container.Stories)
+            foreach (var item in Container.Stories)
             {
-                EditorGUILayout.LabelField(Story.Request);
+                var so = new SerializedObject(item as UnityEngine.Object);
+                EditorGUILayout.ObjectField(item, typeof(UserStory), allowSceneObjects: false);
             }
             EditorGUILayout.EndScrollView();
+            EditorGUILayout.EndVertical();
 
-            Object.ApplyModifiedProperties();
+            SerializedUserCategory.ApplyModifiedProperties();
         }
 
         private void FindAllUserStoriesWithCategory()
         {
-            string[] UserStoriesGUID = AssetDatabase.FindAssets("t:UserStory", new[] { Settings.DEFAULT_CATALOG });
-            List<UserStory> UserStories = new List<UserStory>();
+            List<UserStory> stories = new List<UserStory>();
+            stories.AddRange(Unity.GetAssets<UserStory>(new string[] { Settings.DEFAULT_CATALOG }));
+            stories = stories.FindAll(x => x.Category == SerializedUserCategory.targetObject);
+            Container = new UserStoryContainer(SerializedUserCategory.targetObject as UserStoryCategory, stories);
 
-            foreach (string GUID in UserStoriesGUID)
-            {
-                UserStory us = AssetDatabase.LoadAssetAtPath<UserStory>(AssetDatabase.GUIDToAssetPath(GUID));
-                if (Object.targetObject == us.Category) UserStories.Add(us);
-            }
-
-            Container = new UserStoryContainer(Object.targetObject as UserStoryCategory, UserStories);
         }
     }
 }
