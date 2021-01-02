@@ -1,5 +1,3 @@
-using System.ComponentModel;
-using System.Net.Mime;
 namespace UserStories
 {
     using UnityEngine;
@@ -9,7 +7,6 @@ namespace UserStories
     [CustomEditor(typeof(UserStoryCategory))]
     public class UserStoryCategoriesInspector : Editor
     {
-
         SerializedObject Object;
         SerializedProperty Name;
         SerializedProperty Description;
@@ -32,6 +29,7 @@ namespace UserStories
             EditorGUILayout.PropertyField(Description);
             EditorGUILayout.PropertyField(TextColor);
             
+            EditorGUILayout.LabelField("UserStories");
             EditorGUILayout.BeginScrollView(Vector2.zero);
             foreach(var Story in Container.Stories)
             {

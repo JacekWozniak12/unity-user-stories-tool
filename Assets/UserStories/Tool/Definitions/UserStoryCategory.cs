@@ -8,7 +8,13 @@ namespace UserStories
     public class UserStoryCategory : ScriptableObject, IEquatable<UserStoryCategory>
     {
         public string Name;
+
+        [Space]
+        [TextArea]
         public string Description;
+
+        [Space]
+        [ColorUsage(true, true)]
         public Color TextColor;
 
         public bool Equals(UserStoryCategory other)

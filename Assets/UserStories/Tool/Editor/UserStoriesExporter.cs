@@ -8,7 +8,7 @@ namespace UserStories
     {
         private UserStoriesMain main = UserStoriesMain.Instance;
 
-        [MenuItem("Window/User stories/Editor")]
+        [MenuItem(Settings.MENU_ITEM_DISPLAYER)]
         static void ShowWindow()
         {
             var window = GetWindow<UserStoriesEditor>();
@@ -70,7 +70,6 @@ namespace UserStories
             userStory.Request = EditorGUILayout.TextField("Request", userStory.Request);
             userStory.WhyRequested = EditorGUILayout.TextField("WhyRequested", userStory.WhyRequested);
             userStory.Answer = EditorGUILayout.TextField("Answer", userStory.Answer);
-
             
         }
     }

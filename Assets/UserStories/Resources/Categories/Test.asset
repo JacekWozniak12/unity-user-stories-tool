@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f0f8996445fd8243b0ca7e1b2912e8a, type: 3}
-  m_Name: TestS
+  m_Name: Test
   m_EditorClassIdentifier: 
-  Name: 
-  Description: 
-  TextColor: {r: 0, g: 0, b: 0, a: 0}
+  Name: Test
+  Description: Test
+  TextColor: {r: 0.8018868, g: 0.48794055, b: 0.48794055, a: 0}

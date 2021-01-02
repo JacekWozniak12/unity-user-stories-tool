@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8db1eff95fc9d44a17614946d0a632, type: 3}
   m_Name: SaveFunc
   m_EditorClassIdentifier: 
-  Category: {fileID: 11400000, guid: 20310d740aeecec46a3db75e421eb3d8, type: 2}
+  Category: {fileID: 11400000, guid: d068cd49f77541646ad663bc57d2b330, type: 2}
   Request: I want to save the game.
   WhyRequested: ...to continue from the point I finished last time.
   Answer: You can save progress by using save / load, quick save or after achieving

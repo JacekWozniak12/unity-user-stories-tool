@@ -1,8 +1,8 @@
-using UnityEditor;
-using UnityEngine;
-
 namespace UserStories
 {
+    using UnityEditor;
+    using UnityEngine;
+
     [CustomEditor(typeof(UserStory))]
     public class UserStoryInspector : Editor
     {
@@ -28,7 +28,7 @@ namespace UserStories
             EditorGUILayout.PropertyField(Request);
             EditorGUILayout.PropertyField(WhyRequested);
             EditorGUILayout.PropertyField(Answer);
-            Object.ApplyModifiedProperties();        
+            Object.ApplyModifiedProperties();
         }
 
     }
