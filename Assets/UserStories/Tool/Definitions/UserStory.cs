@@ -10,6 +10,7 @@ namespace UserStories
     [CreateAssetMenu(menuName = Settings.MENU_SO_STORY)]
     public class UserStory : ScriptableObject
     {
+
         [Tooltip("Selected category of UserStory.")]
         public UserStoryCategory Category;
 

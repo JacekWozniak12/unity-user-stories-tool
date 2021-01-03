@@ -25,7 +25,7 @@ namespace UserStories
             return true;
         }
 
-        public void OnEnable()
+        public void OnValidate()
         {
             if (Name == "") Name = name;
         }

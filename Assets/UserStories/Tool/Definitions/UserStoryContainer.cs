@@ -39,4 +39,13 @@ namespace UserStories
             return containers;
         }
     }
+
+    public class UserStoryContainerViewer : UserStoryContainer
+    {
+        public UserStoryContainerViewer(UserStoryCategory category, List<UserStory> stories) : base(category, stories)
+        {
+        }
+
+        public bool show;
+    }
 }

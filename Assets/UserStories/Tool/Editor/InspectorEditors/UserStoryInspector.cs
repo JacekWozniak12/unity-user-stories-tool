@@ -40,10 +40,10 @@ namespace UserStories
         private void DisplayCategory()
         {
             EditorGUILayout.PropertyField(this.Category);
-            DisplayCategoryColor();
+            DisplayCategorySeparatorGUI();
         }
 
-        private void DisplayCategoryColor()
+        public void DisplayCategorySeparatorGUI()
         {
             try
             {
