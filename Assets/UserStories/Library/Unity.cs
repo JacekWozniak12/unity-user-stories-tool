@@ -2,13 +2,16 @@ namespace UserStories.Library
 {
     using System.Collections.Generic;
     using UnityEditor;
-    using UnityEngine;
-
     public static class Unity
     {
-        public static T[] GetAssets<T>(string[] Paths) where T: UnityEngine.Object
+        /// <summary>
+        /// Return unfiltered list of objects of type T from given paths.
+        /// </summary>
+        /// <param name="paths">Relative paths from project main catalog</param>
+        /// <returns>Array of objects of type T where T is type of UnityEngine.Object</returns>
+        public static T[] GetAssets<T>(string[] paths) where T : UnityEngine.Object
         {
-            string[] AssetsGUID = AssetDatabase.FindAssets($"t:{typeof(T).Name}", Paths);
+            string[] AssetsGUID = AssetDatabase.FindAssets($"t:{typeof(T).Name}", paths);
             List<T> assets = new List<T>();
 
             foreach (string GUID in AssetsGUID)
@@ -20,6 +23,13 @@ namespace UserStories.Library
             return assets.ToArray();
         }
 
-        
+        /// <summary>
+        /// Return unfiltered list of objects of type T from given path.
+        /// </summary>
+        /// <param name="paths">Relative path from project main catalog</param>
+        /// <returns>Array of objects of type T where T is type of UnityEngine.Object</returns>
+        public static T[] GetAssets<T>(string path) where T : UnityEngine.Object => GetAssets<T>(new string[] { path });
     }
 }
+
+

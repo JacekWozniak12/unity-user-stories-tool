@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 namespace UserStories
@@ -39,6 +40,10 @@ namespace UserStories
         [ContextMenu("Clean white spaces")]
         public void TrimWhiteSpaces()
         {
+#if UNITY_EDITOR
+            Undo.RecordObject(this, "clean white spaces");
+            EditorUtility.SetDirty(this);
+#endif
             Answer = Answer.Trim();
             WhyRequested = WhyRequested.Trim();
             Request = Request.Trim();

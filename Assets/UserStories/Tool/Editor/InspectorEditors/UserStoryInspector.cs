@@ -25,19 +25,36 @@ namespace UserStories
         public override void OnInspectorGUI()
         {
             SerializedUserStory.Update();
-            EditorGUILayout.PropertyField(this.Category);
-            DisplayCategoryColor();
+            DisplayCategory();
+            DisplayPropertyFields();
+            SerializedUserStory.ApplyModifiedProperties();
+        }
+
+        private void DisplayPropertyFields()
+        {
             EditorGUILayout.PropertyField(Request);
             EditorGUILayout.PropertyField(WhyRequested);
             EditorGUILayout.PropertyField(Answer);
-            SerializedUserStory.ApplyModifiedProperties();
+        }
+
+        private void DisplayCategory()
+        {
+            EditorGUILayout.PropertyField(this.Category);
+            DisplayCategoryColor();
         }
 
         private void DisplayCategoryColor()
         {
-            SerializedObject Category = new SerializedObject(this.Category.objectReferenceValue);
-            CategoryColor = Category.FindProperty("TextColor");
-            EditorGUI.DrawRect(GUILayoutUtility.GetRect(0.0f, 2.0f, GUILayout.ExpandWidth(true)), CategoryColor.colorValue);
+            try
+            {
+                SerializedObject Category = new SerializedObject(this.Category.objectReferenceValue);
+                CategoryColor = Category.FindProperty("TextColor");
+                EditorGUI.DrawRect(GUILayoutUtility.GetRect(0.0f, 2.0f, GUILayout.ExpandWidth(true)), CategoryColor.colorValue);
+            }
+            catch
+            {
+                EditorGUI.DrawRect(GUILayoutUtility.GetRect(0.0f, 2.0f, GUILayout.ExpandWidth(true)), new Color(255, 255, 255, 1));
+            }
         }
     }
 }

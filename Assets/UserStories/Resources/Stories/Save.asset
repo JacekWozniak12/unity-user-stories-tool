@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd8db1eff95fc9d44a17614946d0a632, type: 3}
-  m_Name: LoadingFinish
+  m_Name: Save
   m_EditorClassIdentifier: 
   Category: {fileID: 11400000, guid: 20310d740aeecec46a3db75e421eb3d8, type: 2}
-  Request: What happens after I load the save?
-  WhyRequested: ...as I need to know what should I expect?
-  Answer: "Things that don\u2019t change: \r\n- player\r\n- position\r\n- animation\r\n-
-    AI characters\r\n- position\r\n- animation\r\n- item position\r\n- lightning\r\n-
-    player inventory\r\n- objects marked as _SAVED\r\n\nThings that may change:\r\n-
-    particle systems\r\n- music \r\n- ambient sounds\r"
+  Request: I want to save a game.
+  WhyRequested: ...to continue from the point I finished last time.
+  Answer: You can save progress by using save / load, quick save or after achieving
+    checkpoint set by level designer.

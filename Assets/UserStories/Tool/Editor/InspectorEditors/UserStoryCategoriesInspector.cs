@@ -27,22 +27,30 @@ namespace UserStories
         public override void OnInspectorGUI()
         {
             SerializedUserCategory.Update();
+            DisplayProperties();
+            DisplayUserStoriesOfCategory();
+            SerializedUserCategory.ApplyModifiedProperties();
+        }
+
+        private void DisplayProperties()
+        {
             EditorGUILayout.PropertyField(Name);
             EditorGUILayout.PropertyField(Description);
             EditorGUILayout.PropertyField(TextColor);
+        }
+
+        private void DisplayUserStoriesOfCategory()
+        {
             EditorGUILayout.LabelField("UserStories", EditorStyles.boldLabel);
-            
             EditorGUILayout.BeginVertical();
             EditorGUILayout.BeginScrollView(Vector2.zero);
             foreach (var item in Container.Stories)
             {
-                var so = new SerializedObject(item as UnityEngine.Object);
+                EditorGUILayout.LabelField(item.Request, EditorStyles.largeLabel);
                 EditorGUILayout.ObjectField(item, typeof(UserStory), allowSceneObjects: false);
             }
             EditorGUILayout.EndScrollView();
             EditorGUILayout.EndVertical();
-
-            SerializedUserCategory.ApplyModifiedProperties();
         }
 
         private void FindAllUserStoriesWithCategory()

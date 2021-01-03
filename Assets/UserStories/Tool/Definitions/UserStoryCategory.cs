@@ -24,5 +24,10 @@ namespace UserStories
             if (this.TextColor != other.TextColor) return false;
             return true;
         }
+
+        public void OnEnable()
+        {
+            if (Name == "") Name = name;
+        }
     }
 }
