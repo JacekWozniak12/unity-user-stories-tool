@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8db1eff95fc9d44a17614946d0a632, type: 3}
   m_Name: LoadingFinish
   m_EditorClassIdentifier: 
-  Category: {fileID: 11400000, guid: 20310d740aeecec46a3db75e421eb3d8, type: 2}
+  Category: {fileID: 11400000, guid: 9e2a32d39eae50c47a3bc0c0fe338342, type: 2}
   Request: What happens after I load the save?
   WhyRequested: ...as I need to know what should I expect?
   Answer: "Things that don\u2019t change: \r\n- player\r\n- position\r\n- animation\r\n-

@@ -13,8 +13,6 @@ namespace UserStories
         SerializedProperty Description;
         SerializedProperty TextColor;
         UserStoryContainer Container;
-
-
         private void OnEnable()
         {
             SerializedUserCategory = serializedObject;
